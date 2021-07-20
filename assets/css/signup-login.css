@@ -1,19 +1,7 @@
-:root {
-  --primary-color: #9926f0;
-  --secondary-color: #d63384;
-  font-family: "Poppins", sans-serif;
-  font-size: 17px;
-}
-
 body {
-  margin: 0;
+  box-sizing: border-box;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
   display: flex;
   justify-content: center;
   align-items: center;

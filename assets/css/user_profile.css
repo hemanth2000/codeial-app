@@ -1,0 +1,24 @@
+#logout-btn-container {
+  text-align: right;
+  margin: 10px 15px 0 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: white;
+  border: 1px solid white;
+  outline: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0.78rem 1rem;
+  border-radius: 5rem;
+}
+
+.btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+}

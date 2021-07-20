@@ -1,9 +1,24 @@
 const User = require("../models/user");
 
 module.exports.profile = (req, res) => {
-  return res.render("user", {
-    title: "User page",
-  });
+  if (req.cookies.user_id) {
+    User.findById(req.cookies.user_id, (err, user) => {
+      if (err) {
+        return res.redirect("/user/login");
+      }
+
+      if (user) {
+        return res.render("user_profile", {
+          title: "User profile",
+          user: user,
+        });
+      } else {
+        return res.redirect("/user/login");
+      }
+    });
+  } else {
+    return res.redirect("/user/login");
+  }
 };
 
 module.exports.signup = (req, res) => {
@@ -44,7 +59,7 @@ module.exports.create = (req, res) => {
   });
 };
 
-module.exports.validate = (req, res) => {
+module.exports.createSession = (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
       console.log("Error!");
@@ -52,6 +67,7 @@ module.exports.validate = (req, res) => {
     }
 
     if (user && req.body.password === user.password) {
+      res.cookie("user_id", user.id);
       return res.redirect("/user/profile");
     } else {
       console.log("Invalid credentials!");
@@ -59,4 +75,9 @@ module.exports.validate = (req, res) => {
 
     return res.redirect("back");
   });
+};
+
+module.exports.endSession = (req, res) => {
+  delete res.cookie("user_id", null);
+  return res.redirect("/user/login");
 };
