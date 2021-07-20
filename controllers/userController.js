@@ -44,4 +44,19 @@ module.exports.create = (req, res) => {
   });
 };
 
-module.exports.validate = (req, res) => {};
+module.exports.validate = (req, res) => {
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (err) {
+      console.log("Error!");
+      return res.redirect("back");
+    }
+
+    if (user && req.body.password === user.password) {
+      return res.redirect("/user/profile");
+    } else {
+      console.log("Invalid credentials!");
+    }
+
+    return res.redirect("back");
+  });
+};
