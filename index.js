@@ -1,12 +1,16 @@
 const express = require("express");
+const router = require("./routes");
 
 const app = express();
 
-const PORT = 8000;
+// Setting routes
+app.use("/", router);
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
+// Setting view engine
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+const PORT = 8000;
 
 app.listen(PORT, (err) => {
   if (err) {
