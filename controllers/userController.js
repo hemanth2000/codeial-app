@@ -19,12 +19,28 @@ module.exports.login = (req, res) => {
 };
 
 module.exports.create = (req, res) => {
-  User.create(req.body, (err) => {
+  if (req.body.password != req.body.confirm_password) {
+    console.log("Password must be same!");
+    return res.redirect("back");
+  }
+
+  User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
-      console.log("Account creation failed!");
+      console.log("Error in signing up!");
       return;
     }
-    console.log("Account created successfully!");
+
+    if (!user) {
+      User.create(req.body, (err, user) => {
+        if (err) {
+          console.log("Account creation failed!");
+          return res.redirect("back");
+        }
+        console.log(user);
+        console.log("Account created successfully!");
+        return res.redirect("/user/login");
+      });
+    } else return res.redirect("back");
   });
 };
 
