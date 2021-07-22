@@ -1,0 +1,20 @@
+@media only screen and (max-width: 440px) {
+  body {
+    padding: 10rem 0;
+  }
+  body header {
+    justify-content: center;
+  }
+  body header h1 {
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid rgba(14, 14, 15, 0.973);
+  }
+  body header ul {
+    margin-left: 0;
+    margin-top: 0.4rem;
+  }
+}
+
+/*# sourceMappingURL=home.css.map */

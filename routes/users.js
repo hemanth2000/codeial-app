@@ -1,12 +1,19 @@
 const express = require("express");
+const passport = require("passport");
+
 const userController = require("../controllers/userController");
 
 const router = express.Router();
-
-router.get("/profile", userController.profile);
+router.get("/profile", passport.checkAuthentication, userController.profile);
 router.get("/signup", userController.signup);
 router.get("/login", userController.login);
-router.post("/signup", userController.create);
-router.post("/login", userController.validate);
+router.get("/logout", userController.logout);
+
+router.post("/signup", userController.createUser);
+router.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/user/login" }),
+  userController.createSession
+);
 
 module.exports = router;

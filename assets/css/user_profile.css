@@ -1,0 +1,44 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+}
+@media only screen and (max-width: 766.98px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 440px) {
+  body {
+    padding: 10rem 0;
+  }
+  body header {
+    justify-content: center;
+  }
+  body header h1 {
+    width: 100%;
+    text-align: center;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid rgba(14, 14, 15, 0.973);
+  }
+  body header ul {
+    margin-left: 0;
+    margin-top: 0.4rem;
+  }
+}
+
+header ul a {
+  width: 7rem;
+}
+
+/*# sourceMappingURL=user_profile.css.map */

@@ -1,0 +1,74 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+}
+@media only screen and (max-width: 766.98px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-btn {
+  display: none;
+}
+
+.form-container {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 1.5rem;
+  margin: 1.5rem;
+  padding: 1rem 0;
+}
+.form-container form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: large;
+  padding: 0 1rem;
+  align-items: center;
+  flex-grow: 1;
+}
+@media only screen and (max-height: 750px) and (min-width: 767px) {
+  .form-container {
+    width: 38rem;
+    height: 17rem;
+  }
+  .form-container form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .form-container form button {
+    height: 2.5rem;
+  }
+}
+@media only screen and (max-width: 766.98px) {
+  .form-container {
+    width: 28rem;
+    margin-top: 3rem;
+    height: 27rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .form-container {
+    margin-top: 3.7rem;
+  }
+}
+
+/*# sourceMappingURL=signup.css.map */

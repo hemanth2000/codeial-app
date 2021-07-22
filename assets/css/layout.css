@@ -1,0 +1,153 @@
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+}
+@media only screen and (max-width: 766.98px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  outline: none;
+  font-size: 1.2rem;
+  box-shadow: 0px 0px 2px 2px grey;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.4rem;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@media only screen and (max-width: 766.98px) {
+  input {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  input {
+    font-size: 1.5rem;
+  }
+}
+
+input:focus {
+  border: 1px solid #6f19b1;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background: linear-gradient(45deg, #9926f0, #d63384);
+  min-height: 100vh;
+  padding-bottom: 5rem;
+  padding: 5rem 0;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  padding: 0.5rem 3rem;
+  color: white;
+  background-color: #262626;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 200px;
+}
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+header ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+}
+header ul li {
+  padding-left: 1.5rem;
+}
+header ul a {
+  display: inline-block;
+  font-size: medium;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+  padding: 0.7rem 0;
+  text-align: center;
+  width: 6rem;
+  background-color: white;
+  border-radius: 2rem;
+}
+header ul a:hover {
+  box-shadow: 0 0 0.3rem gray;
+  background: -webkit-linear-gradient(90deg, #9926f0, #d63384);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 2.5rem #33113b;
+}
+.form-container h1 {
+  text-align: center;
+}
+.form-container form * {
+  margin-bottom: 0.1rem;
+}
+.form-container button {
+  align-self: center;
+  font-size: 1.2rem;
+  border-radius: 1.3rem;
+  width: 75%;
+  padding: 0.4rem 0rem;
+  background-color: #9926f0;
+}
+.form-container button:hover {
+  background-color: #6f19b1;
+}
+.form-container button:active {
+  box-shadow: 0px 0px 2.5px 2.5px rgba(112, 25, 179, 0.4);
+}
+
+footer {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 4rem;
+  background-color: #262626;
+}
+
+/*# sourceMappingURL=layout.css.map */

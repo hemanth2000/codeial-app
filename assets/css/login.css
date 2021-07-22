@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 25rem;
+  height: 18rem;
+  border-radius: 1.5rem;
+  margin: 0 1.8rem;
+  padding: 1rem 0;
+}
+.form-container form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 1.3rem;
+  font-size: large;
+  flex-grow: 1;
+}
+
+#login-btn {
+  display: none;
+}
+
+/*# sourceMappingURL=login.css.map */
