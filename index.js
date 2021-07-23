@@ -5,7 +5,6 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
-const sassMiddleware = require("node-sass-middleware");
 
 const passportLocal = require("./config/passport-local-strategy");
 const dbUrl = require("./config/mongoose");
@@ -53,7 +52,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 1000 * 60 * 10,
+      maxAge: 1000 * 60 * 60,
     },
     store: MongoStore.create(
       {

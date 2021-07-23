@@ -1,3 +1,84 @@
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #e6cfcf;
+}
+button:hover {
+  box-shadow: 0px 0px 3px darkgray;
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+}
+@media only screen and (max-width: 766.98px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.display-3 {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.display-5 {
+  font-size: 0.6rem;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+input {
+  font-size: 1.2rem;
+  box-shadow: 0px 0px 2px 2px grey;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.6rem 0.5rem;
+}
+@media only screen and (max-width: 766.98px) {
+  input {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  input {
+    font-size: 1.5rem;
+  }
+}
+
+input:focus {
+  border: 1px solid #6f19b1;
+}
+
+textarea {
+  padding: 0.3rem 0.4rem;
+  color: black;
+  resize: none;
+  font-family: sans-serif;
+}
+
 @media only screen and (max-width: 440px) {
   body {
     padding: 10rem 0;
@@ -15,6 +96,82 @@
     margin-left: 0;
     margin-top: 0.4rem;
   }
+}
+
+.home-feedwall {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.feed-posts {
+  background-color: rgba(24, 25, 26, 0.98);
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(24, 25, 26, 0.5);
+  color: white;
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.8rem;
+}
+.feed-posts form {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0rem 0.5rem;
+}
+.feed-posts form textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #1f1f1f rgba(0, 0, 0, 0.3);
+  margin-right: 0.5rem;
+}
+.feed-posts form textarea::-webkit-scrollbar {
+  width: 0.6rem;
+}
+.feed-posts form textarea::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.feed-posts form textarea::-webkit-scrollbar-thumb {
+  background-color: #1f1f1f;
+  border-radius: 0.35rem;
+}
+.feed-posts form textarea:focus {
+  box-shadow: 0 0 5px black inset;
+}
+.feed-posts form button {
+  align-self: flex-end;
+  color: #3b3b3b;
+}
+
+.user-posts ul {
+  list-style-type: none;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+.user-posts ul li {
+  background-color: rgba(24, 25, 26, 0.98);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(24, 25, 26, 0.5);
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.timestamp::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(248, 139, 139, 0.9);
+  margin-right: 0.4rem;
 }
 
 /*# sourceMappingURL=home.css.map */

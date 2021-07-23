@@ -18,6 +18,15 @@ h1 {
   padding: 0;
 }
 
+.display-3 {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.display-5 {
+  font-size: 0.6rem;
+}
+
 body {
   display: flex;
   justify-content: center;

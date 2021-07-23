@@ -1,3 +1,36 @@
 <link rel="stylesheet" href="/css/home.css" type="text/css" />
 
-<h1>This is homepage of Codaiel</h1>
+<% if (!locals.user){%>
+
+<h1>Codeial Home page</h1>
+
+<%}else{%>
+
+<div class="home-feedwall" id="home-feedwall">
+  <section id="feed-posts" class="feed-posts">
+    <h3>Post your thoughts</h3>
+    <form action="/posts/create" id="new-post-method" method="POST">
+      <textarea
+        name="content"
+        id=""
+        cols="30"
+        rows="3"
+        placeholder="Write here..."
+      ></textarea>
+      <button type="submit">POST</button>
+    </form>
+  </section>
+
+  <section class="user-posts" id="user-posts">
+    <ul>
+      <%for (let i = posts.length-1; i >=0; i--) {%>
+      <li>
+        <div class="display-3"><%= posts[i].user.name%></div>
+        <div class="display-5 timestamp"><%= posts[i].posted_time%></div>
+        <p><%= posts[i].content %></p>
+      </li>
+      <%}%>
+    </ul>
+  </section>
+</div>
+<%}%>
