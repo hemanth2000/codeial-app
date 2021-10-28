@@ -29,7 +29,9 @@ button:hover {
   }
 }
 
-h1 {
+h1,
+h4,
+p {
   margin: 0;
   padding: 0;
 }
@@ -104,6 +106,7 @@ header {
   flex-wrap: wrap;
   align-items: center;
   min-width: 200px;
+  z-index: 99;
 }
 header h1 a {
   color: white;

@@ -10,11 +10,19 @@ const postSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+
+    // Include comments of the posts
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
   },
   {
     timestamps: {
       createdAt: "createdDate",
-      updatedAt: "updatedDate",
+      updatedAt: "lastUpdated",
     },
   }
 );
@@ -28,7 +36,7 @@ var convertTime = (time) => {
 
   if (time < 60) {
     time = Math.floor(time);
-    return time + "m ago";
+    return time + "min ago";
   }
 
   time = time / 60;
@@ -38,9 +46,17 @@ var convertTime = (time) => {
     return time + "h ago";
   }
 
-  time = Math.floor(time / 24);
+  time = time / 24;
 
-  return time + "d ago";
+  if (time < 30) {
+    time = Math.floor(time);
+
+    return time + "d ago";
+  }
+
+  time = Math.floor(time / 30);
+
+  return time + "mon ago";
 };
 
 postSchema.virtual("posted_time").get(function () {
