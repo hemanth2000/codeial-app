@@ -5,10 +5,12 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
+const flash = require("connect-flash"); // For creating flash messages
 
 const passportLocal = require("./config/passport-local-strategy");
 const dbUrl = require("./config/mongoose");
 const router = require("./routes");
+const customMiddleWare = require("./config/middlewares");
 
 const PORT = 8000;
 
@@ -70,6 +72,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMiddleWare.setFlash);
 
 // Setting routes
 app.use("/", router);

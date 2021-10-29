@@ -45,10 +45,12 @@ module.exports.createUser = async (req, res) => {
 };
 
 module.exports.createSession = (req, res) => {
+  req.flash("success", "Logged in successfully!");
   return res.redirect("/");
 };
 
 module.exports.logout = (req, res) => {
+  req.flash("success", "Logged out successfully!");
   req.logout();
   return res.redirect("/");
 };

@@ -12,7 +12,13 @@
     />
     <title>Codeial App</title>
     <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/layout.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +32,31 @@
     <%- style%>
   </head>
   <body>
-    <%- include('_header');%> <%- body%> <%- include('_footer');%> <%- script%>
+    <%- include('_header');%>
+
+    <!-- prettier-ignore -->
+    <%- body%> <%- include('_footer');%> <%- script%>
+
+    <script>
+         <% if (flash.success && flash.success.length > 0){%>
+        new Noty({
+          theme:"metroui",
+          text: "<%= flash.success%>",
+          type: 'success',
+          layout: 'topRight',
+          timeout: 2000
+        }).show();
+      <%} %>
+
+      <% if (flash.error && flash.error.length > 0){%>
+        new Noty({
+          theme:"metroui",
+          text: "<%= flash.error%>",
+          type: 'error',
+          layout: 'topRight',
+          timeout: 2000
+        }).show();
+      <%} %>
+    </script>
   </body>
 </html>
