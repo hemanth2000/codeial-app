@@ -1,0 +1,38 @@
+<li class="post-card">
+  <div class="post-header">
+    <div class="display-3"><%= post.user.name%></div>
+    <a href="/posts/destroy/<%=post._id%>" class="delete-post"
+      ><i class="fa fa-trash" aria-hidden="true"></i
+    ></a>
+  </div>
+
+  <div class="display-5 timestamp"><%= post.posted_time%></div>
+  <p class="post-content"><%= post.content %></p>
+
+  <% if (locals.user){%>
+  <form action="/comment/create %>" method="post">
+    <div>
+      <textarea
+        name="content"
+        placeholder="Write a comment..."
+        cols="30"
+        rows="1"
+        id="comment-textarea"
+        required
+      ></textarea>
+      <input type="hidden" name="post" value="<%=post._id%>" />
+      <div class="button-space">
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <%}%>
+
+  <div class="comments-container">
+    <ul class="comments-list">
+      <% for (comment of post.comments){%> <%- include("_comment")%> <% }%>
+    </ul>
+  </div>
+</li>

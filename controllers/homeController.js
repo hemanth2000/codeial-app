@@ -9,7 +9,7 @@ const Post = require("../models/post");
 
 module.exports.home = (req, res) => {
   if (req.user) {
-    Post.find({ user: req.user._id })
+    Post.find({})
       .populate("user")
       .populate({
         path: "comments",

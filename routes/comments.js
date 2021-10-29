@@ -6,5 +6,10 @@ const router = express.Router();
 const commentController = require("../controllers/commentController");
 
 router.post("/create", passport.checkAuthentication, commentController.create);
+router.get(
+  "/destroy/:id",
+  passport.checkAuthentication,
+  commentController.delete
+);
 
 module.exports = router;
