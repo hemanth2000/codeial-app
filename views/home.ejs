@@ -30,11 +30,13 @@
       </ul>
     </section>
   </div>
-  <%}%>
-  <!-- 
+  <%}%> <% if (locals.user){%>
   <div class="friends-container">
-    <p>Mohan</p>
-  </div> -->
+    <% for (user of users){%>
+    <p><%=user.name%></p>
+    <%}%>
+  </div>
+  <%}%>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/js/home.js" type="text/javascript"></script>

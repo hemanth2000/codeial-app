@@ -27,25 +27,21 @@ module.exports.login = (req, res) => {
   });
 };
 
-module.exports.createUser = (req, res) => {
-  User.findOne({ email: req.body.email }, (err, user) => {
-    if (err) {
-      console.log("Error in creating account!");
-      return res.redirect("back");
-    }
+module.exports.createUser = async (req, res) => {
+  try {
+    let user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      User.create(req.body, (err, user) => {
-        if (err) {
-          console.log("Account creation failed!");
-          return res.redirect("back");
-        }
-        return res.redirect("/user/login");
-      });
+      await User.create(req.body);
+
+      return res.redirect("/user/login");
     } else {
       return res.redirect("back");
     }
-  });
+  } catch (err) {
+    console.log("Error in ", err);
+    return res.redirect("back");
+  }
 };
 
 module.exports.createSession = (req, res) => {

@@ -1,5 +1,5 @@
 const Post = require("../models/post");
-
+const User = require("../models/user");
 // Post.deleteMany({}, (err) => {
 //   if (err) {
 //     console.log("Error");
@@ -7,9 +7,17 @@ const Post = require("../models/post");
 //   console.log("Deleted succesfully!");
 // });
 
-module.exports.home = (req, res) => {
-  if (req.user) {
-    Post.find({})
+module.exports.home = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.render("home", {
+        title: "Codeial App",
+        posts: [],
+        users: [],
+      });
+    }
+
+    let posts = await Post.find({})
       .populate("user")
       .populate({
         path: "comments",
@@ -17,17 +25,17 @@ module.exports.home = (req, res) => {
           path: "user",
           select: "name",
         },
-      })
-      .exec((err, posts) => {
-        return res.render("home", {
-          title: "Codeial App",
-          posts: posts,
-        });
       });
-  } else {
+
+    let users = await User.find({});
+
     return res.render("home", {
       title: "Codeial App",
-      posts: [],
+      posts,
+      users,
     });
+  } catch (err) {
+    console.log("Error", err);
+    return;
   }
 };

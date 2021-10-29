@@ -1,50 +1,42 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
 
-module.exports.create = (req, res) => {
-  Post.findById(req.body.post, (err, post) => {
-    if (post) {
-      Comment.create(
-        {
-          content: req.body.content,
-          user: req.user.id,
-          post: req.body.post,
-        },
+module.exports.create = async (req, res) => {
+  try {
+    let post = await Post.findById(req.body.post);
 
-        (err, comment) => {
-          if (err) console.log("Error creating comment!");
+    let comment = await Comment.create({
+      content: req.body.content,
+      user: req.user.id,
+      post: req.body.post,
+    });
 
-          if (comment) {
-            post.comments.push(comment);
-            post.save();
-          }
+    post.comments.push(comment);
+    post.save();
 
-          res.redirect("back");
-        }
-      );
-    }
-  });
+    return res.redirect("back");
+  } catch (err) {
+    console.log("Error in creating comment\n", err);
+    return;
+  }
 };
 
-module.exports.delete = (req, res) => {
-  Comment.findById(req.params.id, (err, comment) => {
+module.exports.delete = async (req, res) => {
+  try {
+    let comment = await Comment.findById(req.params.id);
+
     if (comment.user == req.user.id) {
       let postId = comment.post;
       comment.remove();
 
-      Post.findById(
-        postId,
-        {
-          $pull: {
-            comments: req.params.id,
-          },
-        },
-        (err, post) => {
-          return res.redirect("back");
-        }
-      );
-    } else {
-      return res.redirect("back");
+      let post = await Post.findById(postId);
+
+      post.comments.pull(req.params.id);
     }
-  });
+
+    return res.redirect("back");
+  } catch (err) {
+    console.log("Error in deleting", err);
+    return res.redirect("back");
+  }
 };
