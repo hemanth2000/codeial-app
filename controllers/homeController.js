@@ -9,8 +9,15 @@ const Post = require("../models/post");
 
 module.exports.home = (req, res) => {
   if (req.user) {
-    Post.find({ user: req.user.id })
+    Post.find({ user: req.user._id })
       .populate("user")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+          select: "name",
+        },
+      })
       .exec((err, posts) => {
         return res.render("home", {
           title: "Codeial App",

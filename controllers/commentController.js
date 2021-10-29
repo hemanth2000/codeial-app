@@ -18,10 +18,10 @@ module.exports.create = (req, res) => {
             post.comments.push(comment);
             post.save();
           }
+
+          res.redirect("back");
         }
       );
     }
   });
-
-  return res.redirect("back");
 };

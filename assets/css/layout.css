@@ -39,10 +39,12 @@ p {
 .display-3 {
   font-weight: bold;
   font-size: medium;
+  color: white;
 }
 
 .display-5 {
   font-size: 0.6rem;
+  color: white;
 }
 
 input,
