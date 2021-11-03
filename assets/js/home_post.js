@@ -15,6 +15,8 @@
           $("#posts-list-container").prepend(newPost);
 
           deletePost($(" .delete-post", newPost));
+
+          showNotiMsg("success", data.message);
         },
         error: (error) => {
           console.log(error.responseText);
@@ -73,12 +75,23 @@
         dataType: "json",
         success: (data) => {
           $(`#post-${data.data.post_id}`).remove();
+          showNotiMsg("success", data.message);
         },
         error: (err) => {
           console.log(err.responseText);
         },
       });
     });
+  };
+
+  let showNotiMsg = (status, message) => {
+    new Noty({
+      theme: "metroui",
+      text: message,
+      type: status,
+      layout: "topRight",
+      timeout: 2000,
+    }).show();
   };
 
   createPost();

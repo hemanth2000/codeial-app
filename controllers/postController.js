@@ -31,8 +31,6 @@ module.exports.delete = async (req, res) => {
   try {
     var id = req.params.id;
 
-    console.log(id);
-
     let post = await Post.findById(id);
 
     if (post.user == req.user.id) {
