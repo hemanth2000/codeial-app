@@ -25,7 +25,8 @@ module.exports.home = async (req, res) => {
           path: "user",
           select: "name",
         },
-      });
+      })
+      .sort({ createdDate: "desc" });
 
     let users = await User.find({});
 

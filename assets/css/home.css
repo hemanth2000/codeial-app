@@ -234,6 +234,9 @@ textarea {
 .user-posts form div button i:hover {
   color: #7c2db9;
 }
+.user-posts .comments-container {
+  background-color: inherit;
+}
 .user-posts .comments-container ul li {
   max-width: 85%;
   margin-bottom: 0.2rem;

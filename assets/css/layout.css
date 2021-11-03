@@ -84,6 +84,7 @@ textarea {
 }
 
 body {
+  position: relative;
   box-sizing: border-box;
   margin: 0;
   background: linear-gradient(45deg, #9926f0, #d63384);
@@ -174,18 +175,24 @@ footer {
   position: fixed;
   bottom: 0.2rem;
   left: 0.2rem;
-  display: flex;
   width: 15%;
+  text-align: center;
   border-radius: 1rem;
-  justify-content: center;
-  align-items: center;
   color: white;
-  height: 2rem;
+  vertical-align: center;
   background-color: #262626;
   font-size: small;
+  padding: 0.4rem;
 }
 footer:hover {
   color: #6f19b1;
+}
+@media only screen and (max-width: 766.98px) {
+  footer {
+    position: relative;
+    width: 95%;
+    margin: auto;
+  }
 }
 
 /*# sourceMappingURL=layout.css.map */

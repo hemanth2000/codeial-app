@@ -1,4 +1,4 @@
-<li class="post-card">
+<li class="post-card" id="post-<%= post._id%>">
   <div class="post-header">
     <div class="display-3"><%= post.user.name%></div>
     <a href="/posts/destroy/<%=post._id%>" class="delete-post"
@@ -31,7 +31,7 @@
   <%}%>
 
   <div class="comments-container">
-    <ul class="comments-list">
+    <ul class="comments-list" id="post-comments-<%=post._id%>">
       <% for (comment of post.comments){%> <%- include("_comment")%> <% }%>
     </ul>
   </div>

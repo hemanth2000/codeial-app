@@ -65,6 +65,8 @@ postSchema.virtual("posted_time").get(function () {
   );
 });
 
+postSchema.set("toJSON", { virtuals: true });
+
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;
