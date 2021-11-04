@@ -16,10 +16,43 @@
 
           deletePost($(" .delete-post", newPost));
 
+          createComment($(" .comment-form", newPost));
+
           showNotiMsg("success", data.message);
+
+          $("#new-post-form>textarea").val("");
         },
         error: (error) => {
           console.log(error.responseText);
+        },
+      });
+    });
+  };
+
+  let createComment = (commentLink) => {
+    let newCommentForm = $(commentLink);
+
+    newCommentForm.submit((event) => {
+      event.preventDefault();
+
+      $.ajax({
+        method: "POST",
+        url: "/comment/create",
+        data: newCommentForm.serialize(),
+        success: (data) => {
+          console.log(data);
+          let postid = data.data.post;
+          let newComment = newCommentDOM(data.data);
+          $(`#post-comments-${postid}`).prepend(newComment);
+
+          deleteComment($(" .delete-comment", newComment));
+
+          $(" #comment-textarea", newCommentForm).val("");
+
+          showNotiMsg("success", data.message);
+        },
+        error: (err) => {
+          console.log(err.responseText);
         },
       });
     });
@@ -39,7 +72,7 @@
       <div class="display-5 timestamp">${post.posted_time}</div>
       <p class="post-content">${post.content}</p>
     
-      <form action="/comment/create %>" method="post">
+      <form action="/comment/create" method="post" class="comment-form">
         <div>
           <textarea
             name="content"
@@ -56,14 +89,31 @@
             </button>
           </div>
         </div>
+        </form>
 
         <div class="comments-container">
         <ul class="comments-list" id="post-comments-${post.id}">
         </ul>
         </div>
     
-      </form>
       </li>`);
+  };
+
+  let newCommentDOM = (comment) => {
+    return $(`<li class="comment" id="comment-${comment._id}">
+    <div>
+      <div>
+        <span>${comment.user.name}</span>
+        <p class="comment-content">${comment.content}</p>
+      </div>
+      <a class="delete-comment" href="/comment/destroy/${comment._id}"
+        ><i class="fas fa-ellipsis-h"></i
+      ></a>
+    </div>
+    <p class="display-5">
+      <span>Like</span><span>Comment</span><span>${comment.posted_time}</span>
+    </p>
+  </li>`);
   };
 
   let deletePost = (deleteLink) => {
@@ -84,6 +134,41 @@
     });
   };
 
+  let deleteComment = (deleteLink) => {
+    $(deleteLink).click((event) => {
+      event.preventDefault();
+      $.ajax({
+        type: "GET",
+        url: $(deleteLink).prop("href"),
+        dataType: "json",
+        success: (data) => {
+          $(`#comment-${data.comment._id}`).remove();
+          showNotiMsg("success", data.message);
+        },
+        error: (err) => {
+          console.log(err.responseText);
+        },
+      });
+    });
+  };
+
+  let addBtns = () => {
+    let delPostLinks = $(".delete-post");
+    for (let i = 0; i < delPostLinks.length; i++) {
+      deletePost(delPostLinks[i]);
+    }
+
+    let createCommentLink = $(".comment-form");
+    for (let i = 0; i < createCommentLink.length; i++) {
+      createComment(createCommentLink[i]);
+    }
+
+    let delCommentLinks = $(".delete-comment");
+    for (let i = 0; i < delCommentLinks.length; i++) {
+      deleteComment(delCommentLinks[i]);
+    }
+  };
+
   let showNotiMsg = (status, message) => {
     new Noty({
       theme: "metroui",
@@ -95,4 +180,5 @@
   };
 
   createPost();
+  addBtns();
 }

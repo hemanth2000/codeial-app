@@ -5,14 +5,26 @@ module.exports.create = async (req, res) => {
   try {
     let post = await Post.findById(req.body.post);
 
-    let comment = await Comment.create({
+    let newComment = await Comment.create({
       content: req.body.content,
       user: req.user.id,
       post: req.body.post,
     });
 
-    post.comments.push(comment);
-    post.save();
+    await post.comments.unshift(newComment);
+    await post.save();
+
+    if (req.xhr || req.headers.accept.indexOf("xml") > -1) {
+      let comment = await Comment.findById(newComment.id).populate(
+        "user",
+        "name"
+      );
+
+      return res.status(200).json({
+        data: comment,
+        message: "Comment added!",
+      });
+    }
 
     return res.redirect("back");
   } catch (err) {
@@ -25,6 +37,8 @@ module.exports.delete = async (req, res) => {
   try {
     let comment = await Comment.findById(req.params.id);
 
+    console.log(comment);
+
     if (comment.user == req.user.id) {
       let postId = comment.post;
       comment.remove();
@@ -32,6 +46,15 @@ module.exports.delete = async (req, res) => {
       let post = await Post.findById(postId);
 
       post.comments.pull(req.params.id);
+
+      if (req.xhr || req.headers.accept.indexOf("xml") > -1) {
+        console.log("I am here!");
+
+        return res.status(200).json({
+          comment: comment,
+          message: "Comment deleted!",
+        });
+      }
     }
 
     return res.redirect("back");

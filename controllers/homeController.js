@@ -23,7 +23,7 @@ module.exports.home = async (req, res) => {
         path: "comments",
         populate: {
           path: "user",
-          select: "name",
+          select: "name _id",
         },
       })
       .sort({ createdDate: "desc" });

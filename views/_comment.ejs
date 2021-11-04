@@ -1,14 +1,17 @@
-<li class="comment" id="comment">
+<li class="comment" id="comment-<%=comment._id%>">
   <div>
     <div>
       <span><%= comment.user.name%></span>
       <p class="comment-content"><%= comment.content%></p>
     </div>
-    <a class="delete-comment" href="/comment/destroy/<%= comment.id%>"
+    <% if (locals.user.id == comment.user.id){%>
+    <a class="delete-comment" href="/comment/destroy/<%= comment._id%>"
       ><i class="fas fa-ellipsis-h"></i
     ></a>
+    <%}%>
   </div>
+
   <p class="display-5">
-    <span>Like</span><span>Comment</span><span>Date</span>
+    <span>Like</span><span>Comment</span><span><%= comment.posted_time%></span>
   </p>
 </li>
