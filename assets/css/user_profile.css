@@ -54,4 +54,15 @@ header ul a {
   width: 7rem;
 }
 
+#pp-img-container {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#pp-img-container img {
+  width: 100%;
+  height: 100%;
+}
+
 /*# sourceMappingURL=user_profile.css.map */

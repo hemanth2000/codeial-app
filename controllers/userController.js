@@ -1,9 +1,11 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 module.exports.profile = (req, res) => {
   return res.render("user_profile", {
     title: "User page",
-    user: req.user,
+    profile_user: req.user,
   });
 };
 
@@ -41,6 +43,40 @@ module.exports.createUser = async (req, res) => {
   } catch (err) {
     console.log("Error in ", err);
     return res.redirect("back");
+  }
+};
+
+module.exports.updateUser = async (req, res) => {
+  if (req.user.id == req.params.id) {
+    try {
+      let user = await User.findById(req.params.id);
+      User.uploadedAvatar(req, res, (err) => {
+        if (err) {
+          console.log("****Multer Error****", err);
+        }
+        user.name = req.body.name;
+        user.email = req.body.email;
+        if (req.file) {
+          let avatar_path = path.join(__dirname, "..", user.avatar);
+
+          if (user.avatar && fs.existsSync(avatar_path)) {
+            fs.unlinkSync(avatar_path);
+          }
+
+          user.avatar = User.avatarPath + "\\" + req.file.filename;
+        }
+
+        user.save();
+
+        return res.redirect("back");
+      });
+    } catch (err) {
+      console.log("Error in ", err);
+      return res.redirect("back");
+    }
+  } else {
+    req.flash("error", "Unauthorized");
+    return res.status(401).send("Unauthorized");
   }
 };
 

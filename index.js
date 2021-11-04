@@ -38,6 +38,7 @@ app.use(cookieParser());
 
 // Setting static files
 app.use(express.static("assets"));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(expressLayouts);
 app.set("layout extractStyles", true);
