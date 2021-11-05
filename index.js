@@ -9,6 +9,7 @@ const flash = require("connect-flash"); // For creating flash messages
 
 const passportLocal = require("./config/passport-local-strategy");
 const passportJWT = require("./config/passport-jwt-strategy");
+const passportGoogle = require("./config/passport-google-oauth");
 const dbUrl = require("./config/mongoose");
 const router = require("./routes");
 const customMiddleWare = require("./config/middlewares");

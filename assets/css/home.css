@@ -289,35 +289,47 @@ textarea {
 .friends-container {
   background-color: #171717;
   color: white;
-  padding: 1rem;
   margin-right: 1rem;
   max-height: 80%;
-  overflow: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #1f1f1f rgba(0, 0, 0, 0.3);
+  overflow: hidden;
   border-radius: 0.5rem 0.5rem 0rem 0rem;
   position: fixed;
   bottom: 0%;
   right: 0%;
 }
-.friends-container::-webkit-scrollbar {
+.friends-container h4 {
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+.friends-container .users-list {
+  height: 15rem;
+  overflow: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #1f1f1f rgba(0, 0, 0, 0.3);
+}
+.friends-container .users-list::-webkit-scrollbar {
   width: 0.4rem;
 }
-.friends-container::-webkit-scrollbar-track {
+.friends-container .users-list::-webkit-scrollbar-track {
   background-color: transparent;
 }
-.friends-container::-webkit-scrollbar-thumb {
+.friends-container .users-list::-webkit-scrollbar-thumb {
   background-color: #3d3d3d;
   border-radius: 0.2rem;
 }
-.friends-container::-webkit-scrollbar-corner {
+.friends-container .users-list::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
 }
-.friends-container h5 {
-  margin: 0;
+.friends-container .users-list a {
+  color: white;
+  text-decoration: none;
 }
-.friends-container p {
+.friends-container .users-list a p {
   font-size: smaller;
+  padding: 0.1rem 1rem;
+}
+.friends-container .users-list a p:hover {
+  background-color: rgba(63, 61, 61, 0.842);
 }
 
 .timestamp::before {
