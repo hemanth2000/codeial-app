@@ -161,6 +161,9 @@ textarea {
   background-color: #3d3d3d;
   border-radius: 0.2rem;
 }
+.feed-posts form textarea::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
 .feed-posts form textarea:focus {
   box-shadow: 0 0 5px black inset;
 }
@@ -226,6 +229,9 @@ textarea {
   background-color: #3d3d3d;
   border-radius: 0.2rem;
 }
+.user-posts form div textarea::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
 .user-posts form div button {
   background-color: inherit;
   flex: 0 0 20px;
@@ -281,9 +287,37 @@ textarea {
 }
 
 .friends-container {
-  background-color: rgba(24, 25, 26, 0.5);
+  background-color: #171717;
   color: white;
-  padding: 0rem 1rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  max-height: 80%;
+  overflow: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #1f1f1f rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+}
+.friends-container::-webkit-scrollbar {
+  width: 0.4rem;
+}
+.friends-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.friends-container::-webkit-scrollbar-thumb {
+  background-color: #3d3d3d;
+  border-radius: 0.2rem;
+}
+.friends-container::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+.friends-container h5 {
+  margin: 0;
+}
+.friends-container p {
+  font-size: smaller;
 }
 
 .timestamp::before {

@@ -2,11 +2,20 @@ const User = require("../models/user");
 const fs = require("fs");
 const path = require("path");
 
-module.exports.profile = (req, res) => {
-  return res.render("user_profile", {
-    title: "User page",
-    profile_user: req.user,
-  });
+module.exports.profile = async (req, res) => {
+  if (req.params.id) {
+    let profile_user = await User.findById(req.params.id);
+
+    return res.render("user_profile", {
+      title: "User page",
+      profile_user,
+    });
+  } else {
+    return res.render("user_profile", {
+      title: "User page",
+      profile_user: req.user,
+    });
+  }
 };
 
 module.exports.signup = (req, res) => {

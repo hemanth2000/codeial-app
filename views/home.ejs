@@ -32,8 +32,9 @@
   </div>
   <%}%> <% if (locals.user){%>
   <div class="friends-container">
+    <h4>Friends List</h4>
     <% for (user of users){%>
-    <p><%=user.name%></p>
+    <p><a href="/user/profile/<%=user._id%>"><%=user.name%></a></p>
     <%}%>
   </div>
   <%}%>
