@@ -8,6 +8,7 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash"); // For creating flash messages
 
 const passportLocal = require("./config/passport-local-strategy");
+const passportJWT = require("./config/passport-jwt-strategy");
 const dbUrl = require("./config/mongoose");
 const router = require("./routes");
 const customMiddleWare = require("./config/middlewares");
@@ -34,6 +35,7 @@ app.use(
   })
 );
 
+app.use(express.json());
 app.use(cookieParser());
 
 // Setting static files
