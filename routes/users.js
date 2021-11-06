@@ -26,6 +26,8 @@ router.post(
   userController.updateUser
 );
 
+router.post("/forgot-password",userController.);
+
 router.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })

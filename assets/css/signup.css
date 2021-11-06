@@ -43,7 +43,7 @@ body {
 
 .form-container {
   width: 25rem;
-  height: 25rem;
+  height: 30rem;
   border-radius: 1.5rem;
   margin: 1.5rem;
   padding: 1rem 0;
@@ -56,12 +56,14 @@ body {
   font-size: large;
   padding: 0 1rem;
   align-items: center;
-  flex-grow: 1;
+}
+.form-container form > * {
+  margin-bottom: 1rem;
 }
 @media only screen and (max-height: 750px) and (min-width: 767px) {
   .form-container {
     width: 38rem;
-    height: 17rem;
+    height: 20rem;
   }
   .form-container form {
     flex-direction: row;
@@ -82,6 +84,50 @@ body {
   .form-container {
     margin-top: 3.7rem;
   }
+}
+.form-container p {
+  box-sizing: border-box;
+  width: 95%;
+  text-align: center;
+  border-bottom: 1px solid black;
+  line-height: 0.1em;
+  margin: 10px auto;
+}
+.form-container p span {
+  padding: 0px 10px;
+  background-color: white;
+}
+.form-container a {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  width: 35%;
+  margin: 1rem auto;
+  box-shadow: 0px 0px 2px 2px grey;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.form-container a .google-signup-btn {
+  display: inline-block;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.form-container a .google-signup-btn .gimg {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container a .google-signup-btn .gimg img {
+  width: 20px;
+  height: 20px;
+}
+.form-container a:hover {
+  border: 1px solid #6f19b1;
 }
 
 /*# sourceMappingURL=signup.css.map */
